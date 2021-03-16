@@ -1,6 +1,6 @@
-package com.roadsurfer.test.repository;
+package com.roadsurfer.codetask.repository;
 
-import com.roadsurfer.test.model.EquipmentType;
+import com.roadsurfer.codetask.model.EquipmentType;
 import org.springframework.data.repository.CrudRepository;
 
 public interface EquipmentTypeRepository extends CrudRepository<EquipmentType, Long> {

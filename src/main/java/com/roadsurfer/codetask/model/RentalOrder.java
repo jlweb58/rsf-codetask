@@ -1,5 +1,6 @@
-package com.roadsurfer.test.model;
+package com.roadsurfer.codetask.model;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -7,28 +8,41 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@Table(name = "rental_order")
 public class RentalOrder extends AbstractPersistable<Long> {
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JoinColumn(name = "startstationid", nullable = false)
+    @JoinColumn(name = "start_station_id", nullable = false)
     private Station startStation;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JoinColumn(name = "endstationid", nullable = false)
+    @JoinColumn(name = "end_station_id", nullable = false)
     private Station endStation;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JoinColumn(name = "campervanid", nullable = false)
+    @JoinColumn(name = "campervan_id", nullable = false)
     private Campervan campervan;
 
     @OneToMany()
     private List<Equipment> equipmentList;
 
-    @Column(name = "startdate", nullable = false)
+    @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
-    @Column(name = "enddate", nullable = false)
+    @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
+
+    public RentalOrder() {
+        super();
+    }
+
+    public RentalOrder(Station startStation, Station endStation, Campervan campervan, LocalDate startDate, LocalDate endDate) {
+        this.startStation = startStation;
+        this.endStation = endStation;
+        this.campervan = campervan;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     public Station getStartStation() {
         return startStation;

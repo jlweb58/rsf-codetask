@@ -1,7 +1,7 @@
-package com.roadsurfer.test.repository;
+package com.roadsurfer.codetask.repository;
 
-import com.roadsurfer.test.model.Equipment;
-import com.roadsurfer.test.model.EquipmentType;
+import com.roadsurfer.codetask.model.Equipment;
+import com.roadsurfer.codetask.model.EquipmentType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

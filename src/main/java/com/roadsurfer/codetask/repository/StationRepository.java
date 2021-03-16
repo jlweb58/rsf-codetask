@@ -1,6 +1,6 @@
-package com.roadsurfer.test.repository;
+package com.roadsurfer.codetask.repository;
 
-import com.roadsurfer.test.model.Station;
+import com.roadsurfer.codetask.model.Station;
 import org.springframework.data.repository.CrudRepository;
 
 public interface StationRepository extends CrudRepository<Station, Long> {

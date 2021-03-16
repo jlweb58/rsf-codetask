@@ -1,4 +1,4 @@
-package com.roadsurfer.test.model;
+package com.roadsurfer.codetask.model;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -13,6 +13,10 @@ public class Campervan extends AbstractPersistable<Long> {
 
     @Column(name = "platenumber", nullable = false)
     private String plateNumber;
+
+    public Campervan() {
+        super();
+    }
 
     public String getName() {
         return name;

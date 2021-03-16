@@ -1,6 +1,6 @@
-package com.roadsurfer.test.repository;
+package com.roadsurfer.codetask.repository;
 
-import com.roadsurfer.test.model.Campervan;
+import com.roadsurfer.codetask.model.Campervan;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CampervanRepository extends CrudRepository<Campervan, Long> {

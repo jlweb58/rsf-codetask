@@ -1,14 +1,16 @@
-package com.roadsurfer.test.model;
+package com.roadsurfer.codetask.model;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class Station extends AbstractPersistable<Long> {
+@Table(name = "equipment_type")
+public class EquipmentType extends AbstractPersistable<Long> {
 
-    @Column(name = "name", nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     public String getName() {

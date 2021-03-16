@@ -1,4 +1,4 @@
-package com.roadsurfer.test.model;
+package com.roadsurfer.codetask.model;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Equipment extends AbstractPersistable<Long> {
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JoinColumn(name = "equipmenttypeid")
+    @JoinColumn(name = "equipment_type_id")
     private EquipmentType equipmentType;
 
     @OneToOne

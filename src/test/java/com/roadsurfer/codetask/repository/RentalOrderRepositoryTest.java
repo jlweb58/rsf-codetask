@@ -1,7 +1,7 @@
-package com.roadsurfer.test.repository;
+package com.roadsurfer.codetask.repository;
 
 
-import com.roadsurfer.test.model.*;
+import com.roadsurfer.codetask.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class RentalOrderRepositoryTest {
 
     @Autowired
-    private OrderRepository repository;
+    private RentalOrderRepository repository;
 
     @Autowired
     private EquipmentTypeRepository equipmentTypeRepository;
