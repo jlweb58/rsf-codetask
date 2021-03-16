@@ -5,6 +5,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,7 @@ public class RentalOrder extends AbstractPersistable<Long> {
     private Campervan campervan;
 
     @OneToMany()
+    @JoinColumn(name = "rental_order_id")
     private List<Equipment> equipmentList;
 
     @Column(name = "start_date", nullable = false)
@@ -34,14 +36,7 @@ public class RentalOrder extends AbstractPersistable<Long> {
 
     public RentalOrder() {
         super();
-    }
-
-    public RentalOrder(Station startStation, Station endStation, Campervan campervan, LocalDate startDate, LocalDate endDate) {
-        this.startStation = startStation;
-        this.endStation = endStation;
-        this.campervan = campervan;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.equipmentList = new ArrayList<>();
     }
 
     public Station getStartStation() {

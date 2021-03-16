@@ -13,6 +13,10 @@ public class EquipmentType extends AbstractPersistable<Long> {
     @Column(nullable = false, unique = true)
     private String name;
 
+    public EquipmentType() {
+        super();
+    }
+
     public String getName() {
         return name;
     }

@@ -4,6 +4,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,8 +16,9 @@ public class Station extends AbstractPersistable<Long> {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany
-    private List<Equipment> equipmentInventory;
+    @OneToMany()
+    @JoinColumn(name = "station_id")
+    private final List<Equipment> equipmentInventory;
 
     public Station() {
         super();
@@ -40,8 +42,6 @@ public class Station extends AbstractPersistable<Long> {
     }
 
     public void removeEquipmentFromInventory(Equipment equipment) {
-        if (equipmentInventory.contains(equipment)) {
             equipmentInventory.remove(equipment);
-        }
     }
 }
