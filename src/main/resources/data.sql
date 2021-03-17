@@ -1,39 +1,39 @@
+
 insert into station(id, name)
-values (1, 'Munich'),
-       (2, 'Berlin'),
-       (3, 'Frankfurt');
+values (111, 'Munich'),
+       (112, 'Berlin'),
+       (113, 'Frankfurt');
 
 
 
 insert into equipment_type(id, name)
-values (1, 'Camping Table'),
-       (2, 'Kitchen Box'),
-       (3, 'Toilet'),
-       (4, 'Camping Chair');
-
-insert into equipment(id, equipment_type_id, station_id)
-values (1, 1, 1),
-       (2, 1, 2),
-       (3, 1, 3),
-       (4, 2, 1),
-       (5, 2, 2),
-       (6, 2, 3),
-       (7, 3, 1),
-       (8, 3, 2);
+values (111, 'Camping Table'),
+       (112, 'Kitchen Box'),
+       (113, 'Toilet'),
+       (114, 'Camping Chair');
 
 insert into campervan(id, name, platenumber)
-values (1, 'Bulli', 'M RC 1111'),
-       (2, 'Bulli', 'M RC 1112'),
-       (3, 'Bulli', 'M RC 1113'),
-       (4, 'Bulli', 'M RC 1114'),
-       (5, 'Bulli', 'M RC 1115'),
-       (6, 'Bulli', 'M RC 1116'),
-       (7, 'Bulli', 'M RC 1117'),
-       (8, 'Bulli', 'M RC 1118'),
-       (9, 'Bulli', 'M RC 1119');
-
-
+values (111, 'Bulli', 'M RC 1111'),
+       (112, 'Bulli', 'M RC 1112'),
+       (113, 'Bulli', 'M RC 1113'),
+       (114, 'Bulli', 'M RC 1114'),
+       (115, 'Bulli', 'M RC 1115'),
+       (116, 'Bulli', 'M RC 1116'),
+       (117, 'Bulli', 'M RC 1117'),
+       (118, 'Bulli', 'M RC 1118'),
+       (119, 'Bulli', 'M RC 1119');
 
 
 insert into rental_order(id, start_station_id, end_station_id, campervan_id, start_date, end_date)
-values (111, 1, 1, 9, now(), now());
+values (111, 111, 111, 119, now(), now());
+
+insert into equipment(id, equipment_type_id, station_id, rental_order_id)
+values (111, 111, 111, 111),
+       (112, 111, 112, null),
+       (113, 111, 113, null),
+       (114, 112, 111, 111),
+       (115, 112, 112, null),
+       (116, 112, 113, null),
+       (117, 113, 111, null),
+       (118, 113, 112, null);
+

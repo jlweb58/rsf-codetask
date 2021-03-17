@@ -31,8 +31,6 @@ public class EquipmentRepositoryTest {
         Equipment found = repository.findById(equipment.getId()).get();
         assertNotNull(found);
         assertNotNull(found.getEquipmentType());
-
-
     }
 
 }

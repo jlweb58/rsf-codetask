@@ -12,8 +12,8 @@ public class Equipment extends AbstractPersistable<Long> {
     @JoinColumn(name = "equipment_type_id")
     private EquipmentType equipmentType;
 
-    @OneToOne
-    @JoinColumn(name = "rental_order_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private RentalOrder rentalOrder;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -30,14 +30,6 @@ public class Equipment extends AbstractPersistable<Long> {
 
     public void setEquipmentType(EquipmentType equipmentType) {
         this.equipmentType = equipmentType;
-    }
-
-    public RentalOrder getOrder() {
-        return rentalOrder;
-    }
-
-    public void setOrder(RentalOrder rentalOrder) {
-        this.rentalOrder = rentalOrder;
     }
 
     public RentalOrder getRentalOrder() {
