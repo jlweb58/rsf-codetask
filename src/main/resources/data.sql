@@ -25,7 +25,11 @@ values (111, 'Bulli', 'M RC 1111'),
 
 
 insert into rental_order(id, start_station_id, end_station_id, campervan_id, start_date, end_date)
-values (111, 111, 111, 119, now(), now());
+values (111, 111, 111, 119, parsedatetime('2021-04-01', 'yyyy-MM-dd'), parsedatetime('2021-04-10', 'yyyy-MM-dd'));
+insert into rental_order(id, start_station_id, end_station_id, campervan_id, start_date, end_date)
+values (112, 111, 111, 118, parsedatetime('2021-04-01', 'yyyy-MM-dd'), parsedatetime('2021-04-10', 'yyyy-MM-dd'));
+
+
 
 insert into equipment(id, equipment_type_id, station_id, rental_order_id)
 values (111, 111, 111, 111),
@@ -34,6 +38,6 @@ values (111, 111, 111, 111),
        (114, 112, 111, 111),
        (115, 112, 112, null),
        (116, 112, 113, null),
-       (117, 113, 111, null),
+       (117, 113, 111, 112),
        (118, 113, 112, null);
 

@@ -5,12 +5,9 @@ import com.roadsurfer.codetask.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.TestPropertySource;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +38,8 @@ public class RentalOrderRepositoryTest {
     private Equipment equipment2;
     private Station munich;
     private Station berlin;
-    private Campervan campervan;
+    private Campervan campervan1;
+    private Campervan campervan2;
 
     @BeforeEach
     public void setUp() {
@@ -51,16 +49,20 @@ public class RentalOrderRepositoryTest {
         equipment2 = makeEquipment(bedding);
         munich = makeStation("Munich");
         berlin = makeStation("Berlin");
-        campervan = new Campervan();
-        campervan.setName("Bulli");
-        campervan.setPlateNumber("M RC 1111");
-        campervan = campervanRepository.save(campervan);
+        campervan1 = new Campervan();
+        campervan1.setName("Bulli");
+        campervan1.setPlateNumber("M RC 1111");
+        campervan1 = campervanRepository.save(campervan1);
+        campervan2 = new Campervan();
+        campervan2.setName("Bulli");
+        campervan2.setPlateNumber("M RC 1112");
+        campervan2 = campervanRepository.save(campervan2);
     }
 
     @Test
     public void testCreateRentalOrder() {
         RentalOrder rentalOrder = new RentalOrder();
-        rentalOrder.setCampervan(campervan);
+        rentalOrder.setCampervan(campervan1);
         rentalOrder.setStartStation(munich);
         rentalOrder.setEndStation(munich);
         rentalOrder.setStartDate(LocalDate.of(2021, 6, 30));
@@ -79,15 +81,23 @@ public class RentalOrderRepositoryTest {
     @Test
     public void testFindByStationAndStartDate() {
         RentalOrder rentalOrder = new RentalOrder();
-        rentalOrder.setCampervan(campervan);
+        rentalOrder.setCampervan(campervan1);
         rentalOrder.setStartStation(munich);
         rentalOrder.setEndStation(munich);
         rentalOrder.setStartDate(LocalDate.of(2021, 6, 30));
         rentalOrder.setEndDate(LocalDate.of(2021, 7, 10));
-        RentalOrder created = repository.save(rentalOrder);
+        repository.save(rentalOrder);
+        rentalOrder = new RentalOrder();
+        rentalOrder.setCampervan(campervan2);
+        rentalOrder.setStartStation(munich);
+        rentalOrder.setEndStation(munich);
+        rentalOrder.setStartDate(LocalDate.of(2021, 6, 30));
+        rentalOrder.setEndDate(LocalDate.of(2021, 7, 10));
+        repository.save(rentalOrder);
+
         List<RentalOrder> pickedUpOrders = repository.findByStartStationAndStartDate(munich, LocalDate.of(2021, 6, 30));
         assertNotNull(pickedUpOrders);
-        assertEquals(1, pickedUpOrders.size());
+        assertEquals(2, pickedUpOrders.size());
     }
 
     private Station makeStation(String name) {
